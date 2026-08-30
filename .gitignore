@@ -1,0 +1,15 @@
+# build artifacts
+src/all.c
+src/*.o
+src/rastertodpp268
+src/commandtofilter2
+src/decomp/*.o
+
+# generated images
+*.pbm
+*.png
+*.pgm
+
+# editor / os
+.DS_Store
+*.swp
