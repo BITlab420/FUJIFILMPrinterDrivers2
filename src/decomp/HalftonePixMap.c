@@ -42,7 +42,7 @@ undefined8 HalftonePixMap(long param_1,uchar *param_2,long param_3)
           uVar1 = uVar1 >> 1;
           if (uVar1 == 0) {
             uVar2 = TranslMotorolaLong(uVar6);
-            *(undefined8 *)puVar10 = uVar2;
+            _memcpy(puVar10,&uVar2,8);
             puVar10 = puVar10 + 8;
             uVar1 = 0x8000000000000000;
             uVar6 = 0;
@@ -59,7 +59,7 @@ undefined8 HalftonePixMap(long param_1,uchar *param_2,long param_3)
         } while ((short)lVar7 < (short)param_3);
         if (uVar1 != 0x8000000000000000) {
           uVar2 = TranslMotorolaLong(uVar6);
-          *(undefined8 *)puVar10 = uVar2;
+          _memcpy(puVar10,&uVar2,8);
         }
       }
       puVar8 = puVar8 + param_3;

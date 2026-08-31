@@ -13,12 +13,25 @@ cd "$(dirname "$0")"
 python3 build.py
 
 # 3. Compile + link
-gcc -c -O2 -I. -w \
+# -Wall keeps format/type warnings; the -Wno-* below suppress Ghidra-decompile
+# artifacts that are intrinsic to the port (uint64_t-as-pointer, opaque
+# struct typedefs, unused temp vars) and cannot be fixed without changing
+# the recompiled semantics.
+gcc -c -O2 -I. -Wall \
     -Wno-error=incompatible-pointer-types \
     -Wno-error=int-conversion \
     -Wno-error=implicit-function-declaration \
     -Wno-error=pointer-sign \
     -Wno-error=return-type \
+    -Wno-int-conversion \
+    -Wno-incompatible-pointer-types \
+    -Wno-pointer-sign \
+    -Wno-pointer-to-int-cast \
+    -Wno-pointer-integer-compare \
+    -Wno-constant-conversion \
+    -Wno-unused-but-set-variable \
+    -Wno-unused-variable \
+    -Wno-deprecated-declarations \
     all.c -o rastertodpp268.o
 
 gcc rastertodpp268.o -lcups -lcupsimage -o rastertodpp268

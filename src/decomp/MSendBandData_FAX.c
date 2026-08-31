@@ -21,7 +21,7 @@ undefined8 MSendBandData_FAX(cups_page_header2_s *param_1,sdata *param_2)
     _fprintf(*(FILE **)PTR____stderrp_100012030,"%s%s","ERROR: ","Invalid Parameter(s).\n");
   }
   else {
-    uVar7 = (ulong)((*(int *)(param_1 + 0x174) + 7U >> 3) + 3) & 0xfffc;
+    uVar7 = (ulong)(((*(int *)(param_1 + 0x174) + 7U) >> 3) + 3) & 0xfffc;
     sVar9 = (ulong)uVar6 * 0x438 + uVar7;
     puVar5 = _malloc(sVar9);
     DAT_100016b20 = puVar5;
@@ -66,7 +66,7 @@ LAB_1000042a7:
     DAT_100016b18 = (ushort)uVar6;
   }
   else if (iVar4 == 8) {
-    uVar6 = uVar6 + 7 >> 3;
+    uVar6 = (uVar6 + 7) >> 3;
     goto LAB_1000042a7;
   }
   uVar6 = (uint)DAT_100016b18;
@@ -75,7 +75,7 @@ LAB_1000042a7:
       copyData(puVar5,DAT_100016b10,DAT_100016b18);
     }
     copyData(DAT_100016b10,
-             DAT_100016b00 + (int)(short)((0xd8 - uVar6) - ((int)(0xd8 - uVar6) >> 0x1f) >> 1),
+             DAT_100016b00 + (int)(short)(((0xd8 - uVar6) - ((int)(0xd8 - uVar6) >> 0x1f)) >> 1),
              DAT_100016b18);
     DAT_100016b00 = DAT_100016b00 + 0xd8;
     lVar10 = lVar10 + -1;

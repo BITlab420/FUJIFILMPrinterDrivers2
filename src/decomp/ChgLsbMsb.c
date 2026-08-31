@@ -13,7 +13,7 @@ void ChgLsbMsb(char *param_1,char *param_2,long param_3)
       bVar1 = *param_1;
       bVar2 = (bVar1 & 2) << 5 |
               (bVar1 & 4) << 3 |
-              bVar1 * '\x02' & 0x10 | bVar1 >> 1 & 8 | bVar1 >> 3 & 4 | bVar1 >> 5 & 2 | bVar1 >> 7;
+              ((bVar1 * '\x02') & 0x10) | ((bVar1 >> 1) & 8) | ((bVar1 >> 3) & 4) | ((bVar1 >> 5) & 2) | (bVar1 >> 7);
       if ((bVar1 & 1) != 0) {
         bVar2 = bVar2 ^ 0x80;
       }

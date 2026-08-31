@@ -15,7 +15,7 @@ void checkSendCUPSPaper(uchar **param_1,short param_2,short param_3,long *param_
   *param_4 = 0;
   pcVar3 = _paperArray;
   lVar2 = 0;
-  if (_paperArray != '\0') {
+  if (_paperArray[0] != '\0') {
     sVar4 = 0;
     do {
       sVar6 = 0;
@@ -37,7 +37,7 @@ void checkSendCUPSPaper(uchar **param_1,short param_2,short param_3,long *param_
     } while ((_paperArray)[lVar2 * 0x44] != '\0');
   }
   *param_1 = (uchar *)"USERDEF";
-  *param_4 = (0x264 - (long)param_3 << 0x20) + (0x264 - (long)param_3 << 0x22) >> 0x20;
+  *param_4 = (long)((int64_t)(((ulong)(longlong)(0x264 - (long)param_3) << 0x20) * 5) >> 0x20);
   return;
 }
 

@@ -196,7 +196,7 @@ LAB_10000a2dc:
                 if (iVar4 == 0) {
                   pcVar9 = _malloc(0x3b);
                   iVar4 = _sscanf((char *)&local_478,"DATA=\"8%d,%d,%d,%s\"",&local_494,local_49c,
-                                  &local_4a0);
+                                  &local_4a0,pcVar9);
                   if ((iVar4 == 0) || (uVar5 = local_494 - 1, 8 < uVar5)) goto LAB_10000a929;
                   bVar14 = pcVar9 != (char *)0x0;
                   iVar4 = 0;

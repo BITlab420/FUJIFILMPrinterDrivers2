@@ -12,7 +12,7 @@ undefined2 SendPage_FAX(faxcomp *param_1,cups_page_header2_s *param_2)
   if (_lFAXDataCnt != 0) {
     iVar1 = NumericLength(_lFAXDataCnt);
     iVar2 = _printf("\x1bPUTDATA[%ld,",_lFAXDataCnt);
-    if (iVar2 < iVar1 * 0x10000 + 0xa0000 >> 0x10) {
+    if (iVar2 < ((iVar1 * 0x10000 + 0xa0000) >> 0x10)) {
       return 1;
     }
     sVar3 = _fwrite(*(void **)(param_1 + 0x18),_lFAXDataCnt,1,*(FILE **)PTR____stdoutp_100012038);

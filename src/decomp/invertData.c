@@ -9,11 +9,11 @@ void invertData(uchar *param_1,uchar *param_2,short param_3)
   ushort uVar2;
   uint uVar3;
   ulong uVar4;
-  undefined6 in_register_00000012;
+  ulong uVar7;
   byte *pbVar5;
   byte *pbVar6;
   
-  uVar4 = CONCAT62(in_register_00000012,param_3) >> 3 & 0x1fffffff;
+  uVar4 = (ulong)((uint)(ushort)param_3 >> 3);
   pbVar5 = param_2;
   pbVar6 = param_1;
   if ((short)uVar4 != 0) {
@@ -22,16 +22,17 @@ void invertData(uchar *param_1,uchar *param_2,short param_3)
     pbVar6 = param_1 + uVar4 * 8 + 8;
     uVar3 = -((uint)(int)param_3 >> 3);
     do {
-      uVar4 = *(ulong *)param_1;
+      _memcpy(&uVar7,param_1,8);
       param_1 = (uchar *)((long)param_1 + 8);
-      *(ulong *)param_2 = ~uVar4;
+      uVar7 = ~uVar7;
+      _memcpy(param_2,&uVar7,8);
       param_2 = (uchar *)((long)param_2 + 8);
       uVar2 = (short)uVar3 + 1;
       uVar3 = (uint)uVar2;
     } while (uVar2 != 0);
   }
   if ((param_3 & 7U) != 0) {
-    uVar3 = -((uint)CONCAT62(in_register_00000012,param_3) & 7);
+    uVar3 = -((uint)(ushort)param_3 & 7);
     do {
       bVar1 = *pbVar6;
       pbVar6 = pbVar6 + 1;

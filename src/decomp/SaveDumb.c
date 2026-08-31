@@ -9,7 +9,7 @@ int SaveDumb(long *param_1,uchar *param_2)
   long lVar2;
   
   lVar2 = *param_1;
-  if ((0x4000 < lVar2 + DAT_100016a70 || _model_language == 3 && (DAT_100016a80 & 0x7f) == 0) &&
+  if ((0x4000 < lVar2 + DAT_100016a70 || (_model_language == 3 && (DAT_100016a80 & 0x7f) == 0)) &&
      ((code)(DAT_100016220) != (code)0x0)) {
     sVar1 = (int)((undefined8 (*)(void))DAT_100016220)();
     if (sVar1 != 0) {

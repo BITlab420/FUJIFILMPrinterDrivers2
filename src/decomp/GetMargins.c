@@ -35,7 +35,7 @@ void GetMargins(cups_page_header2_s *param_1,short param_2)
   }
   sVar4 = sVar4 + -0x50;
 LAB_100003729:
-  uVar1 = (undefined2)((int)sVar4 + 7U >> 3);
+  uVar1 = (undefined2)(((int)sVar4 + 7U) >> 3);
   __margins = (ulong)CONCAT22(uVar1,uVar1);
   return;
 }

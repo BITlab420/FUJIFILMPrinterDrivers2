@@ -291,7 +291,7 @@ LAB_1000052ad:
             if ((pcVar7 != (char *)0x0) && (iVar4 = _strcmp(pcVar7,"ON"), iVar4 == 0)) {
               param_3[0x14] = (sdata)((byte)param_3[0x14] | 2);
             }
-            *(undefined4 *)(param_3 + 0xe) = 0;
+            ___bzero(param_3 + 0xe,4);
             pcVar7 = (char *)GetOption("com.apple.print.PrintSettings.PMTotalBeginPages..n.");
             if (pcVar7 == (char *)0x0) {
               *(undefined2 *)(param_3 + 0xc) = 0xffff;

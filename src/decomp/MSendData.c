@@ -15,7 +15,7 @@ undefined8 MSendData(void)
   if (DAT_100016a70 != 0) {
     iVar2 = NumericLength(DAT_100016a70 + 2);
     iVar3 = _printf("%ldw%c%c",DAT_100016a70 + 2,0,uVar1 & 0xff);
-    if (iVar3 < iVar2 * 0x10000 + 0x30000 >> 0x10) {
+    if (iVar3 < ((iVar2 * 0x10000 + 0x30000) >> 0x10)) {
       return 1;
     }
     sVar4 = _fwrite(_send_buf,DAT_100016a70,1,*(FILE **)PTR____stdoutp_100012038);

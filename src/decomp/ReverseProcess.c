@@ -8,12 +8,10 @@ void ReverseProcess(uchar *param_1,ushort param_2,short param_3)
   void *pvVar1;
   uchar *puVar2;
   long lVar3;
-  undefined6 in_register_00000012;
   size_t sVar4;
   uint uVar5;
-  undefined6 in_register_00000032;
   
-  uVar5 = (int)CONCAT62(in_register_00000032,param_2) * (int)CONCAT62(in_register_00000012,param_3);
+  uVar5 = (uint)((int)(uint)(ushort)param_2 * (int)(uint)(ushort)param_3);
   sVar4 = (size_t)(int)uVar5;
   pvVar1 = _malloc(sVar4);
   _memcpy(pvVar1,param_1,sVar4);

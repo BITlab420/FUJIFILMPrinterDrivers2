@@ -1,6 +1,6 @@
 // _getDeviceStatusSub  entry=10000b118
 
-undefined8 _getDeviceStatusSub(...)
+undefined8 _getDeviceStatusSub(double param_1)
 
 {
   undefined8 uVar1;

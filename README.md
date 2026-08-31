@@ -25,6 +25,13 @@ per-run timestamps, and byte-comparing gives:
 Reference outputs from the original driver are in `tests/refs/`;
 `tests/compare.sh` re-runs the comparison.
 
+Beyond the base rasters, `tests/run_duipa_more.sh` runs a 32-case edge
+suite against the original binary: multi-print (copies up to 9), multi-page
+duplex long/short-edge, odd/even/single-page duplex, 8-bit grayscale at
+300/600/1200 dpi, non-Letter papers (Legal/A5/Env10), blank pages, tiny/wide/
+tall pages, odd pixel sizes, and PPD option strings (resolution, toner save,
+skip-blank, media type, duplex). All byte-compare **IDENTICAL**.
+
 ## Structure
 
     bin/                    original macOS Mach-O x86_64 binaries (binary blob deps)
@@ -52,6 +59,7 @@ Reference outputs from the original driver are in `tests/refs/`;
       mkras*.c              generate synthetic test rasters
       offsets.c             libcups struct field offset checks
     tests/                  test rasters + PPD + duipa (对拍) harness + refs/
+    tools/mkgen.c           generic multi-page raster generator for edge cases
 
 ## How the port works
 

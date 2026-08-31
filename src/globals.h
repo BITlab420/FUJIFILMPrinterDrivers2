@@ -69,7 +69,7 @@ extern int DAT_100016b08;
 extern int DAT_100016b10;
 extern int DAT_100016b18;
 extern int DAT_100016b20;
-extern int DAT_100016b30;
+extern char DAT_100016b30[0x400];
 extern void * DAT_100016200;
 extern void * DAT_100016208;
 extern void * DAT_100016210;

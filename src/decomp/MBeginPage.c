@@ -27,7 +27,7 @@ undefined2 MBeginPage(cups_page_header2_s *param_1,sdata *param_2,int param_3)
       uVar4 = 1;
     }
     iVar3 = _printf("\x1b&l%dX",uVar4);
-    if (iVar3 < iVar2 * 0x10000 + 0x40000 >> 0x10) {
+    if (iVar3 < ((iVar2 * 0x10000 + 0x40000) >> 0x10)) {
       return 1;
     }
     if (((byte)param_2[0x14] & 4) == 0) {

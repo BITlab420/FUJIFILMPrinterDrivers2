@@ -7,7 +7,7 @@ undefined8 _copyPlistfromBundle(undefined8 param_1,long param_2)
   long lVar2;
   undefined8 uVar3;
   undefined8 uVar4;
-  int local_2c;
+  int local_2c = 0;
   long local_28;
   
   if (param_2 != 0) {

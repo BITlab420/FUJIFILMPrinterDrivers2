@@ -15,8 +15,7 @@ undefined8 SetHalftoneMatrix(cups_page_header2_s *param_1,ppd_file_s *param_2,sh
   size_t sVar8;
   uint uVar9;
   size_t sVar10;
-  undefined4 local_448;
-  undefined1 local_444;
+  char local_448 [8];
   char local_440 [8];
   char local_438 [1024];
   long local_38;
@@ -36,13 +35,13 @@ undefined8 SetHalftoneMatrix(cups_page_header2_s *param_1,ppd_file_s *param_2,sh
       iVar2 = _strcmp(pcVar6,"600dpi");
       if (iVar2 == 0) {
         iVar2 = _strcmp(pcVar5,"HalftoneKind4");
-        uVar9 = iVar2 == 0 | 2;
+        uVar9 = (iVar2 == 0) | 2;
       }
       else {
         iVar2 = _strcmp(pcVar6,"2400x600dpi");
         if (iVar2 == 0) {
           iVar2 = _strcmp(pcVar5,"HalftoneKind4");
-          uVar9 = iVar2 == 0 | 4;
+          uVar9 = (iVar2 == 0) | 4;
         }
       }
     }
@@ -50,7 +49,13 @@ undefined8 SetHalftoneMatrix(cups_page_header2_s *param_1,ppd_file_s *param_2,sh
   *param_3 = 0;
   ___bzero(local_438,0x400);
   _strcat(local_438,&_lutfolderpath);
-  _strcat(local_438,"0300-G13.bin" + (ulong)uVar9 * 0x20);
+  {
+    static const char lutname[6][0x20] = {
+      "0300-G13.bin", "0300-T13.bin", "0600-G13.bin",
+      "0600-T13.bin", "HQ1200-G13.bin", "HQ1200-T13.bin"
+    };
+    _strcat(local_438,lutname[uVar9]);
+  }
   iVar2 = _open(local_438,0);
   if (-1 < iVar2) {
     local_440[4] = 0;
@@ -60,16 +65,22 @@ undefined8 SetHalftoneMatrix(cups_page_header2_s *param_1,ppd_file_s *param_2,sh
     local_440[3] = '\0';
     sVar7 = _read(iVar2,local_440,4);
     if ((sVar7 == 4) && (iVar3 = _strcmp(local_440,"BRML"), iVar3 == 0)) {
-      local_444 = 0;
-      local_448 = 0;
-      sVar7 = _read(iVar2,&local_448,4);
+      local_448[4] = 0;
+      local_448[0] = '\0';
+      local_448[1] = '\0';
+      local_448[2] = '\0';
+      local_448[3] = '\0';
+      sVar7 = _read(iVar2,local_448,4);
       if (sVar7 == 4) {
-        iVar3 = _atoi((char *)((long)&local_448 + 2));
-        local_444 = 0;
-        local_448 = 0;
+        iVar3 = _atoi(&local_448[2]);
+        local_448[4] = 0;
+        local_448[0] = '\0';
+        local_448[1] = '\0';
+        local_448[2] = '\0';
+        local_448[3] = '\0';
         _lMatrixRow = iVar3;
-        sVar7 = _read(iVar2,&local_448,4);
-        if (((sVar7 == 4) && (iVar4 = _atoi((char *)((long)&local_448 + 2)), 0 < iVar3)) &&
+        sVar7 = _read(iVar2,local_448,4);
+        if (((sVar7 == 4) && (iVar4 = _atoi(&local_448[2]), 0 < iVar3)) &&
            (0 < iVar4)) {
           sVar10 = (size_t)(iVar4 * iVar3);
           _pMatrixRow = _malloc(sVar10);

@@ -13,3 +13,7 @@ src/decomp/*.o
 # editor / os
 .DS_Store
 *.swp
+tests/*.port
+tests/*.ref
+tests/case_*
+tools/mkgen

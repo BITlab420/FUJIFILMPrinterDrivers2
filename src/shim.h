@@ -123,7 +123,11 @@ typedef unsigned char _BRCalibrationInfo;
 #define _rename rename
 #define _readlink readlink
 #define ___bzero bzero
+#ifdef __APPLE__
+#define ___error __error
+#else
 #define ___error __errno_location
+#endif
 #define ___sprintf_chk sprintf
 static void __attribute__((noreturn)) _stack_chk_fail_wrap(void) { abort(); }
 #define ___stack_chk_fail _stack_chk_fail_wrap
@@ -163,17 +167,19 @@ extern void __stack_chk_fail(void) __attribute__((noreturn));
 #define _getline getline
 
 /* Ghidra CONCATxx macros: combine two integers into one (a=HIGH, b=LOW) */
-#define CONCAT11(a,b) (((byte)(a) << 8) | ((byte)(b)))
-#define CONCAT12(a,b) (((byte)(a) << 16) | ((ushort)(b)))
-#define CONCAT14(a,b) (((byte)(a) << 32) | ((uint)(b)))
-#define CONCAT18(a,b) (((byte)(a) << 56) | ((ulong)(b)))
-#define CONCAT21(a,b) (((ushort)(a) << 8) | ((byte)(b)))
-#define CONCAT22(a,b) (((ushort)(a) << 16) | ((ushort)(b)))
-#define CONCAT24(a,b) (((ushort)(a) << 32) | ((uint)(b)))
-#define CONCAT28(a,b) (((ushort)(a) << 48) | ((ulong)(b)))
-#define CONCAT41(a,b) (((uint)(a) << 8) | ((byte)(b)))
-#define CONCAT42(a,b) (((uint)(a) << 16) | ((ushort)(b)))
-#define CONCAT44(a,b) (((uint)(a) << 32) | ((uint)(b)))
+/* Cast to unsigned before shifting so a high bit in the low part does not
+   overflow the promoted 'int' (the original machine uses 32/64-bit regs). */
+#define CONCAT11(a,b) (((uint)(byte)(a) << 8) | ((uint)(byte)(b)))
+#define CONCAT12(a,b) (((uint)(byte)(a) << 16) | ((uint)(ushort)(b)))
+#define CONCAT14(a,b) (((ulong)(byte)(a) << 32) | ((uint)(b)))
+#define CONCAT18(a,b) (((ulong)(byte)(a) << 56) | ((ulong)(b)))
+#define CONCAT21(a,b) (((uint)(ushort)(a) << 8) | ((uint)(byte)(b)))
+#define CONCAT22(a,b) (((uint)(ushort)(a) << 16) | ((uint)(ushort)(b)))
+#define CONCAT24(a,b) (((ulong)(ushort)(a) << 32) | ((ulong)(uint)(b)))
+#define CONCAT28(a,b) (((ulong)(ushort)(a) << 48) | ((ulong)(b)))
+#define CONCAT41(a,b) (((uint)(a) << 8) | ((uint)(byte)(b)))
+#define CONCAT42(a,b) (((uint)(a) << 16) | ((uint)(ushort)(b)))
+#define CONCAT44(a,b) (((ulong)(uint)(a) << 32) | ((ulong)(uint)(b)))
 #define CONCAT48(a,b) (((ulong)(a) << 32) | ((ulong)(b)))
 #define CONCAT81(a,b) (((ulong)(a) << 8) | ((ulong)(byte)(b)))
 #define CONCAT82(a,b) (((ulong)(a) << 16) | ((ulong)(ushort)(b)))

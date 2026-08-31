@@ -7,7 +7,7 @@ int EndPageData(cups_page_header2_s *param_1,sdata *param_2)
 {
   short sVar1;
   
-  sVar1 = (int)((int (*)(void))DAT_100016210)();
+  sVar1 = (int)((int (*)(void *, void *))DAT_100016210)(param_1,param_2);
   if (sVar1 == 0) {
     _fflush(*(FILE **)PTR____stdoutp_100012038);
     if (0 < _gGetStatusMode) {

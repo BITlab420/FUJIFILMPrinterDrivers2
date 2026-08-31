@@ -71,7 +71,7 @@ LAB_100005ba6:
       goto LAB_100005cb2;
     }
     DAT_100016a98 =
-         (ushort)((*(int *)(param_1 + 0x174) + 7U & 0xfffffff8) * 0x2000 + 0x30000 >> 0x10) & 0xfffc
+         (ushort)((((*(int *)(param_1 + 0x174) + 7U) & 0xfffffff8) * 0x2000 + 0x30000) >> 0x10) & 0xfffc
     ;
     sVar5 = 0;
   }

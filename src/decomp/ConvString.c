@@ -6,10 +6,9 @@ void ConvString(uchar *param_1,short param_2,short param_3)
 
 {
   byte bVar1;
-  undefined2 in_register_00000012;
   int iVar2;
   
-  iVar2 = CONCAT22(in_register_00000012,param_3);
+  iVar2 = (int)(uint)(ushort)param_3;
   if (iVar2 == 0x4e4) {
     bVar1 = *param_1;
     while (bVar1 != 0) {

@@ -24,7 +24,7 @@ int _getDeviceStatus(double param_1)
     iVar9 = 500;
   }
   if ((_gStatus == 0) || (iVar4 = 1, _gStatus == 0x2711)) {
-    iVar4 = _getDeviceStatusSub();
+    iVar4 = _getDeviceStatusSub(0.0);
     puVar1 = PTR____stderrp_100012030;
     if (_gStatus == 0) {
       iVar4 = 0;
@@ -142,9 +142,9 @@ int _getDeviceStatus(double param_1)
         }
         local_50 = (char *)0x0;
         if (pcVar7 != (char *)0x0) {
-          _fprintf(*(FILE **)PTR____stderrp_100012030,"%s-%s\n","STATE: ");
+          _fprintf(*(FILE **)PTR____stderrp_100012030,"%s-%s\n","STATE: ",pcVar7);
           local_50 = (char *)_convertWarningErrorStatusMessage(pcVar7);
-          _fprintf(*(FILE **)puVar1,"%s+%s\n","STATE: ");
+          _fprintf(*(FILE **)puVar1,"%s+%s\n","STATE: ",local_50);
         }
       }
       else if ((_gModelInfo == 2) && (1 < DAT_100015084)) {

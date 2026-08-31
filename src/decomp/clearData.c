@@ -7,10 +7,9 @@ void clearData(uchar *param_1,short param_2)
 {
   ulong uVar1;
   ulong uVar2;
-  undefined6 in_register_00000032;
   uchar *puVar3;
   
-  uVar2 = CONCAT62(in_register_00000032,param_2) & 0xffffffff;
+  uVar2 = (uint)(ushort)param_2;
   uVar1 = uVar2 >> 3;
   puVar3 = param_1;
   if ((short)uVar1 != 0) {

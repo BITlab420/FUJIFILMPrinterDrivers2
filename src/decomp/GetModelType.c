@@ -17,7 +17,7 @@ byte GetModelType(ppd_file_s *param_1)
     if (pcVar2 == (char *)0x0) {
       lVar1 = _ppdFindAttr(param_1,"APPrinterIconPath",0);
       pcVar2 = _strstr(*(char **)(lVar1 + 0xa8),"BRInk");
-      bVar3 = pcVar2 == (char *)0x0 | 4;
+      bVar3 = (pcVar2 == (char *)0x0) | 4;
     }
   }
   return bVar3;
